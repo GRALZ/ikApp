@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "ToplamPersonel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Toplam Personel</h2>
+<section class="section dashboard">
+    <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+           @foreach(var s in ViewBag.Departmanlari)
+           {
+
+                <!-- Customers Card -->
+                <div class="col-xxl-4 col-xl-12">
+
+                    <div class="card info-card customers-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">@s.DepartmanAd</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@s.PersonelSayisi</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+           }
+                </div>
+            </div>
+            </div>
+</section>

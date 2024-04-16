@@ -1,0 +1,29 @@
+﻿@model WebApplication1.Models.Departmen
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Departman Güncelleme Sayfası</h2>
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Departman Listesi</li>
+            <li class="breadcrumb-item active">Departman Güncelle</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+@using (Html.BeginForm("DepartmanGuncelle", "Departman", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Departmanid)
+    @Html.Label("Departman Ad")
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-warning">GÜNCELLE</button>
+}
+
+

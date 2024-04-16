@@ -1,0 +1,52 @@
+﻿@model WebApplication1.Models.Sirket
+@{
+    ViewBag.Title = "SirketGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Sirket Güncelleme Sayfası</h2>
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Şirket Listesi</li>
+            <li class="breadcrumb-item active">Şirket Güncelle</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+@using (Html.BeginForm("SirketGuncelle", "Sirket", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Sirketid)
+    @Html.Label("Şirket Ad")
+    @Html.TextBoxFor(x => x.SirketAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Adresi")
+    @Html.TextBoxFor(x => x.SirketAdres, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Sahibi")
+    @Html.TextBoxFor(x => x.SirketSahibi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Sicil No")
+    @Html.TextBoxFor(x => x.SirketsecilNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Vergi No")
+    @Html.TextBoxFor(x => x.SirketVergiNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Telefon")
+    @Html.TextBoxFor(x => x.isYeriTelefon, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Belgegeçer")
+    @Html.TextBoxFor(x => x.İsyeriBelgegecerNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Tehlike Sınıfı")
+    @Html.TextBoxFor(x => x.İsyeriTehlikesınıfı, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-warning">Güncelle</button>
+}
+
+

@@ -1,0 +1,67 @@
+﻿@model WebApplication1.Models.Sirket
+@{
+    ViewBag.Title = "SirketEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script src="~/Scripts/myScript.js"></script>
+<h2>Yeni Sirket Ekle</h2>
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Şirket Listesi</li>
+            <li class="breadcrumb-item active">Şirket Ekle</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<form class="form-group" method="post">
+    @Html.Label("Şirket Ad")
+    @Html.TextBoxFor(x => x.SirketAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Adresi")
+    @Html.TextBoxFor(x => x.SirketAdres, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Sahibi")
+    @Html.TextBoxFor(x => x.SirketSahibi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Sicil No")
+    @Html.TextBoxFor(x => x.SirketsecilNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Vergi No")
+    @Html.TextBoxFor(x => x.SirketVergiNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Telefon")
+    @Html.TextBoxFor(p => p.isYeriTelefon, new { @class = "form-control", required = "", maxlength = "50" })
+    <br />
+    @Html.Label("İş Yeri Belgegeçer No")
+    @Html.TextBoxFor(x => x.İsyeriBelgegecerNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş yeri Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("İş Yeri Tehlike  Sınıfı")
+    @Html.TextBoxFor(x => x.İsyeriTehlikesınıfı, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-primary">KAYDET</button>
+
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+<script>
+    $(document).ready(function ($) {
+        $('#isYeriTelefon').mask("(999) 999 99 99");
+        //    $('#IBAN1').mask("TR99 9999 9999 9999 9999 9999 99");
+        //  $('#IBAN2').mask("TR99 9999 9999 9999 9999 9999 99");
+
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">

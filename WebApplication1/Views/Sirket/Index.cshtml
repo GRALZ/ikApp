@@ -1,0 +1,84 @@
+﻿@using WebApplication1.Models;
+@model List<Sirket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Şirket Listesi</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+
+<br />
+<div>
+    <a href="/Sirket/SirketEkle/" class="btn btn-outline-info">Şirket  Ekle </a>
+</div>
+<br />
+<table id="tbl1" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sirket Adı</th>
+            <th>Sirket Adres</th>
+            <th>Sirket Sahibi</th>
+            <th>Sirket Sicil No</th>
+            <th>Sirket Vergi No</th>
+            <th>İş Yeri Telefon</th>
+            <th>İş Yeri Belgegeçer No</th>
+            <th>Mail</th>
+            <th>İş Yeri Tehlike Sınıfı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.SirketAd</td>
+                <td>@x.SirketAdres</td>
+                <td>@x.SirketSahibi</td>
+                <td>@x.SirketsecilNo</td>
+                <td>@x.SirketVergiNo</td>
+                <td>@x.isYeriTelefon</td>
+                <td>@x.İsyeriBelgegecerNo</td>
+                <td>@x.Mail</td>
+                <td>@x.İsyeriTehlikesınıfı</td>
+
+                <td><a href="/Sirket/Sirketsil/@x.Sirketid" class="btn btn-outline-danger">SİL</a></td>
+                <td><a href="/Sirket/SirketGetir/@x.Sirketid" class="btn btn-outline-success">GÜNCELLE</a></td>
+            </tr>
+
+
+
+        }
+    </tbody>
+</table>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+<link href="~/TEMPLATE NICE ADMIN/assets/css/style2.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $('#tbl1').dataTable({
+        "language": {
+
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+
+        }
+    });
+</script>

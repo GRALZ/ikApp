@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.Departmen
+@{
+    ViewBag.Title = "Departmanekle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Departman Ekle</h2>
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Departman Listesi</li>
+            <li class="breadcrumb-item active">Departman Ekle</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Departman Ad")
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-primary">KAYDET</button>
+</form>
+
+

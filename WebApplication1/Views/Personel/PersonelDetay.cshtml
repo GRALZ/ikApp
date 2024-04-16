@@ -1,0 +1,482 @@
+﻿@using WebApplication1.Models;
+@model List<Personel>
+@{
+    ViewBag.Title = "PersonelDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Personel Listesi</li>
+            <li class="breadcrumb-item active">Personel Detay</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Personel Detay</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/TEMPLATE NICE ADMIN/assets/img/ocakcilogo.png" rel="icon">
+    <link href="~/TEMPLATE NICE ADMIN/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/TEMPLATE NICE ADMIN/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/TEMPLATE NICE ADMIN/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: NiceAdmin - v2.5.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+    @foreach (var x in Model)
+    {
+
+
+        <main id="main" class="main">
+
+
+            <section class="section profile">
+                <div class="row">
+                    <div class="col-xl-4">
+
+                        <div class="card">
+                            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                                <img src="@x.PersonelGorsel" alt="Profile" class="rounded-circle">
+                                <h2>@x.PersonelAd @x.PersonelSoyad</h2>
+                                <h3>@x.Departman.DepartmanAd</h3>
+                                <div class="social-links mt-2">
+                                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-xl-8">
+
+                        <div class="card">
+                            <div class="card-body pt-3">
+                                <!-- Bordered Tabs -->
+                                <ul class="nav nav-tabs nav-tabs-bordered">
+                                </ul>
+                                <div class="tab-content pt-2">
+
+                                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                        <h5 class="card-title"></h5>
+
+                                        <h5 class="card-title">Personel Detay</h5>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label ">Ad Soyad</div>
+                                            <div class="col-lg-9 col-md-8">@x.PersonelAd @x.PersonelSoyad</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Cinsiyet</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cinsiyet</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">TC kimlik</div>
+                                            <div class="col-lg-9 col-md-8">@x.TCKimlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Sosyal Güvenlik Numarası</div>
+                                            <div class="col-lg-9 col-md-8">@x.SosyalGuvenlikNo</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Görevi Başlama Tarhi</div>
+                                            <div class="col-lg-9 col-md-8">@x.GoreveBaslamaT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Fiili Görevi</div>
+                                            <div class="col-lg-9 col-md-8">@x.Departman.DepartmanAd</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Takım Lideri</div>
+                                            <div class="col-lg-9 col-md-8">@x.Takımlideri</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Atamalı Mesleği</div>
+                                            <div class="col-lg-9 col-md-8">@x.AtamalıMeslegi</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Alınan Ücret</div>
+                                            <div class="col-lg-9 col-md-8">@x.Maas</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Meslek Kodu</div>
+                                            <div class="col-lg-9 col-md-8">@x.MeslekKodu</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Görevli Sirket</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.SirketAd</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Görev Yaptığı Bölge</div>
+                                            <div class="col-lg-9 col-md-8">@x.GorevYaptıgıYer</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Adresi</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.SirketAdres</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Sahibi</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.SirketSahibi</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Sicil No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.SirketsecilNo</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Vergi No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.SirketVergiNo</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">İş Yeri Telefon No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.isYeriTelefon</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Belgeçer No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.İsyeriBelgegecerNo</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Şirket Belgeçer No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.İsyeriBelgegecerNo</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">İş Yeri E-Posta</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.Mail</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">İş Yeri Tehlike Sınıfı (NACE)</div>
+                                            <div class="col-lg-9 col-md-8">@x.Sirket.İsyeriTehlikesınıfı</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Son Mezun Olduğu Okul</div>
+                                            <div class="col-lg-9 col-md-8">@x.MezunOlduguOkul</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Yabancı Dil Bilgisi</div>
+                                            <div class="col-lg-9 col-md-8">@x.YabanciDil</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Önceki İş Yeri-Görevi 1</div>
+                                            <div class="col-lg-9 col-md-8">@x.OncekiIsYeri_Gorevi</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Deneyim Süresi 1</div>
+                                            <div class="col-lg-9 col-md-8">@x.DeneyimSuresi</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Önceki İş Yeri-Görevi 2</div>
+                                            <div class="col-lg-9 col-md-8">@x.OncekiISYeri_gorev2</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Deneyim Süresi 2</div>
+                                            <div class="col-lg-9 col-md-8">@x.DeneyimSuresi2</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Önceki İş Yeri-Görevi 3</div>
+                                            <div class="col-lg-9 col-md-8">@x.OncekiIsYeri_gorev3</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Deneyim Süresi 3</div>
+                                            <div class="col-lg-9 col-md-8">@x.DeneyimSuresi3</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Doğum Tarihi </div>
+                                            <div class="col-lg-9 col-md-8">@x.personelDogumT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Kan Grubu</div>
+                                            <div class="col-lg-9 col-md-8">@x.KanGrubu</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Cep Tel</div>
+                                            <div class="col-lg-9 col-md-8">@x.CepTel</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">E-Posta Adresi</div>
+                                            <div class="col-lg-9 col-md-8">@x.Mail</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Ev Adresi</div>
+                                            <div class="col-lg-9 col-md-8">@x.Adres</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">İl/İlçe</div>
+                                            <div class="col-lg-9 col-md-8">@x.Ililce</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Medeni Durumu</div>
+                                            <div class="col-lg-9 col-md-8">@x.Medeni</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Adı Soyadı</div>
+                                            <div class="col-lg-9 col-md-8">@x.EsAdıSoyadı</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Tc Kimlik Numarası</div>
+                                            <div class="col-lg-9 col-md-8">@x.EsTcKimlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Doğum Tarihi</div>
+                                            <div class="col-lg-9 col-md-8">@x.EsDogumT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Tahsil</div>
+                                            <div class="col-lg-9 col-md-8">@x.EsTahsil</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Meslek</div>
+                                            <div class="col-lg-9 col-md-8">@x.EsMeslek</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Çalışıyor mu</div>
+                                            <div class="col-lg-9 col-md-8">@x.Escalısıyormu</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Kamu/Özel</div>
+                                            <div class="col-lg-9 col-md-8">@x.kamuOzel</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Evlilik Tarihi</div>
+                                            <div class="col-lg-9 col-md-8">@x.EvlilikT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Eş Telefon Numarsı</div>
+                                            <div class="col-lg-9 col-md-8">@x.Ililce</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">1. Çocuk Adı</div>
+                                            <div class="col-lg-9 col-md-8">@x.CocukAdı1</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">1.Çocuk Cinsiyet</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cinsiyetcocuk1</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">1.Çocuk Tc Kimlik No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cocuk1TCKimlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">1.Çocuk Doğum Tarihi</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk1DogumT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">1.Çocuk Geçirilen/Devam Eden Herhangi Rahatsızlık</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk1hastalık</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">2. Çocuk Adı</div>
+                                            <div class="col-lg-9 col-md-8">@x.CocukAdı2</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">2.Çocuk Cinsiyet</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cinsiyetcocuk2</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">2.Çocuk Tc Kimlik No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cocuk2TCKimlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">2.Çocuk Doğum Tarihi</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk2DogumT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">2.Çocuk Geçirilen/Devam Eden Herhangi Rahatsızlık</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk2hastalık</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">3. Çocuk Adı</div>
+                                            <div class="col-lg-9 col-md-8">@x.CocukAdı3</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">3.Çocuk Cinsiyet</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cinsiyetcocuk3</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">3.Çocuk Tc Kimlik No</div>
+                                            <div class="col-lg-9 col-md-8">@x.Cocuk3TCKimlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">3.Çocuk Doğum Tarihi</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk3DogumT</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">3.Çocuk Geçirilen/Devam Eden Herhangi Rahatsızlık</div>
+                                            <div class="col-lg-9 col-md-8">@x.cocuk3hastalık</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Ekek Çalışanlarn Arkerlik</div>
+                                            <div class="col-lg-9 col-md-8">@x.erkekCalısanlarınaskerlik</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Kendisinde Engelli Raporu Olup Olmadığı Varsa Derecesi</div>
+                                            <div class="col-lg-9 col-md-8">@x.EngelliRapor</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Baba Sağ / Vefat</div>
+                                            <div class="col-lg-9 col-md-8">@x.babaSagVefat</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Baba Adı Soyadı</div>
+                                            <div class="col-lg-9 col-md-8">@x.BabaAdıSoyadı</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Baba Telefon Numarası</div>
+                                            <div class="col-lg-9 col-md-8">@x.BabaTel</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Anne Sağ/ Vefat</div>
+                                            <div class="col-lg-9 col-md-8">@x.AnneSagVefat</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Anne Adı Soyadı</div>
+                                            <div class="col-lg-9 col-md-8">@x.AnneAdıSoyadı</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Anne Telefon Nuarası</div>
+                                            <div class="col-lg-9 col-md-8">@x.AnneTel</div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">İlave Bilgi - Açıklama</div>
+                                            <div class="col-lg-9 col-md-8">@x.İleveBilgi</div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+
+
+                                    </div><!-- End Bordered Tabs -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            </section>
+
+        </main>}
+    <!-- End #mai
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/TEMPLATE NICE ADMIN/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/TEMPLATE NICE ADMIN/assets/js/main.js"></script>
+
+</body>
+
+</html>

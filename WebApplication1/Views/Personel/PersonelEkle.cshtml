@@ -1,0 +1,499 @@
+﻿@model WebApplication1.Models.Personel
+
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script src="~/Scripts/myScript.js"></script>
+<br />
+<h2>Personel Ekle Sayfası</h2>
+<br />
+<div class="pagetitle">
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Index/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Personel Listesi</li>
+            <li class="breadcrumb-item active">Personel Ekle</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<form class="from-group" method="post">
+    @Html.Label("Personel Resim")
+    <input class="form-control" type="file" id="formFile">
+    <br />
+
+    @Html.Label("Personel Ad")
+    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Personel Soyad")
+    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cinsiyet")
+    @Html.EnumDropDownListFor(m => m.Cinsiyet, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("TC Kimlik No")
+    <input type="text" id="TCKimlik" name="TCNO" pattern="\d*" class="form-control" required maxlength="11">
+    <br />
+    @Html.Label("Sosyal Güvenlik No")
+    @Html.TextBoxFor(x => x.SosyalGuvenlikNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Göreve Başlama Tarihi")
+    @Html.TextBoxFor(x => x.GoreveBaslamaT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("Departman Adı")
+    @Html.DropDownListFor(x => x.Departman.Departmanid, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
+    <br />
+    @Html.Label("Takım Lideri")
+    @Html.TextBoxFor(x => x.Takımlideri, new { @class = "form-control" })
+    <br />
+    @Html.Label(" Atamalı Mesleği")
+    @Html.TextBoxFor(x => x.AtamalıMeslegi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alınan Ücret ")
+    @Html.TextBoxFor(x => x.Maas, new { @class = "form-control" })
+    <br />
+    @Html.Label(" Meslek Kodu")
+    @Html.TextBoxFor(x => x.MeslekKodu, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şirket Adı")
+    @Html.DropDownListFor(x => x.Sirket.Sirketid, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+    <br />
+    @Html.Label("Görev Yaptığı Yer")
+    @Html.TextBoxFor(x => x.GorevYaptıgıYer, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Mezun Olduğu Okul ")
+    @Html.TextBoxFor(x => x.MezunOlduguOkul, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yabancı Dil")
+    @Html.TextBoxFor(x => x.YabanciDil, new { @class = "form-control" })
+    <br />
+    @Html.Label("Önceki İş Yeri ve Görevi 1")
+    @Html.TextBoxFor(x => x.OncekiIsYeri_Gorevi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Deneyim Süresi")
+    @Html.TextBoxFor(x => x.DeneyimSuresi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Önceki İş Yeri ve Görevi 2")
+    @Html.TextBoxFor(x => x.OncekiISYeri_gorev2, new { @class = "form-control" })
+    <br />
+    @Html.Label("Deneyim Süresi")
+    @Html.TextBoxFor(x => x.DeneyimSuresi2, new { @class = "form-control" })
+    <br />
+    @Html.Label("Önceki İş Yeri ve Görevi 3")
+    @Html.TextBoxFor(x => x.OncekiIsYeri_gorev3, new { @class = "form-control" })
+    <br />
+    @Html.Label("Deneyim Süresi")
+    @Html.TextBoxFor(x => x.DeneyimSuresi3, new { @class = "form-control" })
+    <br />
+    @Html.Label("Personel Doğum Tarihi")
+    @Html.TextBoxFor(x => x.personelDogumT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("Kan Grubu")
+    @Html.TextBoxFor(x => x.KanGrubu, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cep Telefonu")
+    @Html.TextBoxFor(p => p.CepTel, new { @class = "form-control", required = "", maxlength = "50" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adres")
+    @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+    <br />
+    @Html.Label("İL/İLÇE")
+    @Html.TextBoxFor(x => x.Ililce, new { @class = "form-control" })
+    <br />
+    @Html.Label("Birleştirilmiş Adres")
+    @Html.TextBoxFor(x => x.BirlestirmisAdres, new { @class = "form-control" })
+    <br />
+    @Html.Label("Medeni Durumu")
+    @Html.TextBoxFor(x => x.Medeni, new { @class = "form-control" })
+    <br />
+    @Html.Label("Eş Ad Soyad")
+    @Html.TextBoxFor(x => x.EsAdıSoyadı, new { @class = "form-control" })
+    <br />
+    @Html.Label("Eş TC Kimlik No")
+    <input type="text" id="EsTcKimlik" name="TCNO" pattern="\d*" class="form-control" maxlength="11">
+    <br />
+    @Html.Label("Eş Doğum Tarihi")
+    @Html.TextBoxFor(x => x.EsDogumT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("Eş Tahsil")
+    @Html.TextBoxFor(x => x.EsTahsil, new { @class = "form-control" })
+    <br />
+    @Html.Label("Eş Meslek")
+    @Html.TextBoxFor(x => x.EsMeslek, new { @class = "form-control" })
+    <br />
+    @Html.Label("Eş Çalışıyor mu")
+    @Html.TextBoxFor(x => x.Escalısıyormu, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kamu/Özel")
+    @Html.TextBoxFor(x => x.kamuOzel, new { @class = "form-control" })
+    <br />
+    @Html.Label("Evlilik Tarihi")
+    @Html.TextBoxFor(x => x.EvlilikT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("Eş Cep Telefonu")
+    @Html.TextBoxFor(p => p.Estel, new { @class = "form-control", maxlength = "50" })
+    <br />
+    @Html.Label("1.Çocuk Ad")
+    @Html.TextBoxFor(x => x.CocukAdı1, new { @class = "form-control" })
+    <br />
+    @Html.Label("1.Çocuk Cinsiyet")
+    @Html.EnumDropDownListFor(m => m.Cinsiyetcocuk1, new { @class = "form-control" })
+    <br />
+    @Html.Label("1.Çocuk TC Kimlik")
+    <input type="text" id="Cocuk1TCKimlik" name="TCNO" pattern="\d*" class="form-control" maxlength="11">
+    <br />
+    @Html.Label("1.Çocuk Doğum Tarihi")
+    @Html.TextBoxFor(x => x.cocuk1DogumT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("1.Çocuk Okuduğu Okul")
+    @Html.TextBoxFor(x => x.Cocuk1OkduguOkul, new { @class = "form-control" })
+    <br />
+    @Html.Label("1.Çocuk Hastalık ve Rahatsızlık")
+    @Html.TextBoxFor(x => x.cocuk1hastalık, new { @class = "form-control" })
+    <br />
+    @Html.Label("2.Çocuk Ad")
+    @Html.TextBoxFor(x => x.CocukAdı2, new { @class = "form-control" })
+    <br />
+    @Html.Label("2.Çocuk Cinsiyet")
+    @Html.EnumDropDownListFor(m => m.Cinsiyetcocuk2, new { @class = "form-control" })
+    <br />
+    @Html.Label("2.Çocuk TC Kimlik")
+    <input type="text" id="Cocuk2TCKimlik" name="TCNO" pattern="\d*" class="form-control" maxlength="11">
+    <br />
+    @Html.Label("2.Çocuk Doğum Tarihi")
+    @Html.TextBoxFor(x => x.cocuk2DogumT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("2.Çocuk Okuduğu Okul")
+    @Html.TextBoxFor(x => x.Cocuk2OkduguOkul, new { @class = "form-control" })
+    <br />
+    @Html.Label("2.Çocuk Hastalık ve Rahatsızlık")
+    @Html.TextBoxFor(x => x.cocuk2hastalık, new { @class = "form-control" })
+    <br />
+    @Html.Label("3.Çocuk Ad")
+    @Html.TextBoxFor(x => x.CocukAdı3, new { @class = "form-control" })
+    <br />
+    @Html.Label("3.Çocuk Cinsiyet")
+    @Html.EnumDropDownListFor(m => m.Cinsiyetcocuk3, new { @class = "form-control" })
+    <br />
+    @Html.Label("3.Çocuk TC Kimlik")
+
+    <input type="text" id="Cocuk3TCKimlik" name="TCNO" pattern="\d*" class="form-control"  maxlength="11">>
+    <br />
+    @Html.Label("3.Çocuk Doğum Tarihi")
+    @Html.TextBoxFor(x => x.cocuk3DogumT, new { @class = "form-control", type = "date" })
+    <br />
+    @Html.Label("3.Çocuk Okuduğu Okul")
+    @Html.TextBoxFor(x => x.Cocuk3OkduguOkul, new { @class = "form-control" })
+    <br />
+    @Html.Label("3.Çocuk Hastalık ve Rahatsızlık")
+    @Html.TextBoxFor(x => x.cocuk3hastalık, new { @class = "form-control" })
+    <br />
+    @Html.Label("Erkek Çalışan Askerlik")
+    @Html.TextBoxFor(x => x.erkekCalısanlarınaskerlik, new { @class = "form-control" })
+    <br />
+    @Html.Label("Engeli Raporu")
+    @Html.TextBoxFor(x => x.EngelliRapor, new { @class = "form-control" })
+    <br />
+    @Html.Label("Baba Sağ/Vefat")
+    @Html.TextBoxFor(x => x.babaSagVefat, new { @class = "form-control" })
+    <br />
+    @Html.Label("Baba Adı Soyadı")
+    @Html.TextBoxFor(x => x.BabaAdıSoyadı, new { @class = "form-control" })
+    <br />
+    @Html.Label("Baba Cep Telefon")
+    @Html.TextBoxFor(p => p.BabaTel, new { @class = "form-control", maxlength = "50" })
+    <br />
+    @Html.Label("Anne Sağ/Vefat")
+    @Html.TextBoxFor(x => x.AnneSagVefat, new { @class = "form-control" })
+    <br />
+    @Html.Label("Anne Adı Soyadı")
+    @Html.TextBoxFor(x => x.AnneAdıSoyadı, new { @class = "form-control" })
+    <br />
+    @Html.Label("Anne Cep Telefon")
+    @Html.TextBoxFor(p => p.AnneTel, new { @class = "form-control", maxlength = "50" })
+    <br />
+    @Html.Label("İlave Bilgiler")
+    @Html.TextBoxFor(x => x.İleveBilgi, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-outline-primary">KAYDET</button>
+</form>
+
+@*<script src="~/TEMPLATE NICE ADMIN/assets/js/tc.js"></script>*@
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+<script>
+    $(document).ready(function ($) {
+        $('#CepTel').mask("(999) 999 99 99");
+        //    $('#IBAN1').mask("TR99 9999 9999 9999 9999 9999 99");
+        //  $('#IBAN2').mask("TR99 9999 9999 9999 9999 9999 99");
+
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $('#Estel').mask("(999) 999 99 99");
+        //    $('#IBAN1').mask("TR99 9999 9999 9999 9999 9999 99");
+        //  $('#IBAN2').mask("TR99 9999 9999 9999 9999 9999 99");
+
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $('#BabaTel').mask("(999) 999 99 99");
+        //    $('#IBAN1').mask("TR99 9999 9999 9999 9999 9999 99");
+        //  $('#IBAN2').mask("TR99 9999 9999 9999 9999 9999 99");
+
+
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $('#AnneTel').mask("(999) 999 99 99");
+        //    $('#IBAN1').mask("TR99 9999 9999 9999 9999 9999 99");
+        //  $('#IBAN2').mask("TR99 9999 9999 9999 9999 9999 99");
+
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var isSuccess = false;
+        $("#TCKimlik").focusout(function () {
+            //alert("kontrol et");
+            var kontrolEdilecekBilgi = $("#TCKimlik").val();
+            if (kontrolEdilecekBilgi == "") {
+                //$("#mesajMetin").text("Lütfen tüm alanları doldurunuz!");
+                //$("#mesaj").show();
+                return;
+            }
+            var data = { no: kontrolEdilecekBilgi };
+            $.ajax({
+                type: 'POST',
+                url: "/Personel/KimlikNoKontrol",
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (sonuc) {
+                    //alert(sonuc.Durum);
+                    if (sonuc.Durum == true) {
+                        isSuccess = true;
+                    }
+                },
+                complete: function () {
+                    if (isSuccess == true) {
+                        //alert("true")
+                    } else {
+                        //alert("Vergi No Hatalı! Lütfen kontrol ediniz.");
+                        swal("Kimlik No Hatalı!", "Lütfen kontrol ediniz!", "error")
+                    }
+                    isSuccess = false;
+                }
+            });
+        })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var isSuccess = false;
+        $("#EsTcKimlik").focusout(function () {
+            //alert("kontrol et");
+            var kontrolEdilecekBilgi = $("#EsTcKimlik").val();
+            if (kontrolEdilecekBilgi == "") {
+                //$("#mesajMetin").text("Lütfen tüm alanları doldurunuz!");
+                //$("#mesaj").show();
+                return;
+            }
+            var data = { no: kontrolEdilecekBilgi };
+            $.ajax({
+                type: 'POST',
+                url: "/Personel/KimlikNoKontrol",
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (sonuc) {
+                    //alert(sonuc.Durum);
+                    if (sonuc.Durum == true) {
+                        isSuccess = true;
+                    }
+                },
+                complete: function () {
+                    if (isSuccess == true) {
+                        //alert("true")
+                    } else {
+                        //alert("Vergi No Hatalı! Lütfen kontrol ediniz.");
+                        swal("Kimlik No Hatalı!", "Lütfen kontrol ediniz!", "error")
+                    }
+                    isSuccess = false;
+                }
+            });
+        })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        var isSuccess = false;
+        $("#Cocuk1TCKimlik").focusout(function () {
+            //alert("kontrol et");
+            var kontrolEdilecekBilgi = $("#Cocuk1TCKimlik").val();
+            if (kontrolEdilecekBilgi == "") {
+                //$("#mesajMetin").text("Lütfen tüm alanları doldurunuz!");
+                //$("#mesaj").show();
+                return;
+            }
+            var data = { no: kontrolEdilecekBilgi };
+            $.ajax({
+                type: 'POST',
+                url: "/Personel/KimlikNoKontrol",
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (sonuc) {
+                    //alert(sonuc.Durum);
+                    if (sonuc.Durum == true) {
+                        isSuccess = true;
+                    }
+                },
+                complete: function () {
+                    if (isSuccess == true) {
+                        //alert("true")
+                    } else {
+                        //alert("Vergi No Hatalı! Lütfen kontrol ediniz.");
+                        swal("Kimlik No Hatalı!", "Lütfen kontrol ediniz!", "error")
+                    }
+                    isSuccess = false;
+                }
+            });
+        })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        var isSuccess = false;
+        $("#Cocuk2TCKimlik").focusout(function () {
+            //alert("kontrol et");
+            var kontrolEdilecekBilgi = $("#Cocuk2TCKimlik").val();
+            if (kontrolEdilecekBilgi == "") {
+                //$("#mesajMetin").text("Lütfen tüm alanları doldurunuz!");
+                //$("#mesaj").show();
+                return;
+            }
+            var data = { no: kontrolEdilecekBilgi };
+            $.ajax({
+                type: 'POST',
+                url: "/Personel/KimlikNoKontrol",
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (sonuc) {
+                    //alert(sonuc.Durum);
+                    if (sonuc.Durum == true) {
+                        isSuccess = true;
+                    }
+                },
+                complete: function () {
+                    if (isSuccess == true) {
+                        //alert("true")
+                    } else {
+                        //alert("Vergi No Hatalı! Lütfen kontrol ediniz.");
+                        swal("Kimlik No Hatalı!", "Lütfen kontrol ediniz!", "error")
+                    }
+                    isSuccess = false;
+                }
+            });
+        })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        var isSuccess = false;
+        $("#Cocuk3TCKimlik").focusout(function () {
+            //alert("kontrol et");
+            var kontrolEdilecekBilgi = $("#Cocuk3TCKimlik").val();
+            if (kontrolEdilecekBilgi == "") {
+                //$("#mesajMetin").text("Lütfen tüm alanları doldurunuz!");
+                //$("#mesaj").show();
+                return;
+            }
+            var data = { no: kontrolEdilecekBilgi };
+            $.ajax({
+                type: 'POST',
+                url: "/Personel/KimlikNoKontrol",
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (sonuc) {
+                    //alert(sonuc.Durum);
+                    if (sonuc.Durum == true) {
+                        isSuccess = true;
+                    }
+                },
+                complete: function () {
+                    if (isSuccess == true) {
+                        //alert("true")
+                    } else {
+                        //alert("Vergi No Hatalı! Lütfen kontrol ediniz.");
+                        swal("Kimlik No Hatalı!", "Lütfen kontrol ediniz!", "error")
+                    }
+                    isSuccess = false;
+                }
+            });
+        })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+
